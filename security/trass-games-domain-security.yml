@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: trass.games
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 19 12:18:47 2026 GMT
+  hsts: false
+- host: yeeps.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 15 19:42:32 2026 GMT
+  hsts: true
+  hsts_max_age: 7889238
+domains:
+- domain: trass.games
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
+- domain: yeeps.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

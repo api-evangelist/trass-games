@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+source: https://yeeps.com/.well-known/openid-configuration
+description: >-
+  Cross-cutting standards conformance observed on Trass Games' public web
+  surface on 2026-07-21. Trass Games publishes no first-party developer API;
+  the conformance below is provided by the Shopify platform its storefronts
+  run on, served from Trass Games' own domains. Recorded honestly as
+  platform-provided.
+standards:
+  - id: oidc
+    conforms: true
+    provided_by: Shopify customer accounts (platform)
+    evidence:
+      - https://yeeps.com/.well-known/openid-configuration
+      - https://gogvr.com/.well-known/openid-configuration
+    notes: Full OpenID Connect discovery metadata (authorization_code + PKCE
+      S256, RS256 id tokens) for store customer login; issuer is
+      shopify.com/authentication/<shop-id>, not a Trass Games identity service.
+  - id: oauth2
+    conforms: true
+    provided_by: Shopify customer accounts (platform)
+    evidence:
+      - https://yeeps.com/.well-known/oauth-authorization-server
+    notes: RFC 8414 authorization server metadata; grant types
+      authorization_code, refresh_token, and jwt-bearer; scopes include
+      customer-account-api:full and customer-account-mcp-api:full.
+  - id: ucp
+    conforms: true
+    provided_by: Shopify (platform)
+    evidence:
+      - https://yeeps.com/.well-known/ucp
+    notes: Universal Commerce Protocol merchant profile, versions 2026-04-08
+      and 2026-01-23, advertising the dev.ucp.shopping MCP service and
+      checkout / fulfillment / discount capabilities.
+  - id: rfc9457
+    conforms: false
+    evidence: []
+    notes: No first-party API surface publishes application/problem+json.
+  - id: fhir
+    conforms: false
+    evidence: []
+    notes: Not applicable; consumer VR gaming company.

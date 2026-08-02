@@ -1,0 +1,86 @@
+generated: '2026-07-21'
+method: searched
+description: >-
+  Results of probing the /.well-known/ discovery surface for Trass Games hosts
+  (trass.games, yeeps.com, gogvr.com). Status is the HTTP code observed at fetch
+  time on 2026-07-21. trass.games serves a catch-all frameset (embedding
+  yeeps.com) that answers 200 with the same body for every path, so its 200s
+  are recorded as present-but-not-a-real-document and not saved. The Shopify
+  storefront hosts serve real OpenID Connect / OAuth authorization server
+  metadata (Shopify customer accounts) and a Universal Commerce Protocol (UCP)
+  merchant profile; those payloads were saved verbatim. No security.txt was
+  found on any host.
+hosts:
+  - host: https://trass.games
+    note: catch-all frameset embedding yeeps.com; every path returns 200 with
+      the same HTML frameset body, so none are real well-known documents
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        real: false
+      - path: /.well-known/openid-configuration
+        status: 200
+        real: false
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        real: false
+      - path: /.well-known/api-catalog
+        status: 200
+        real: false
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        real: false
+      - path: /llms.txt
+        status: 200
+        real: false
+  - host: https://yeeps.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 200
+        type: application/json
+        file: trass-games-yeeps-openid-configuration.json
+        note: Shopify customer accounts OIDC metadata (issuer shopify.com/authentication/69386076387)
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        type: application/json
+        file: trass-games-yeeps-oauth-authorization-server.json
+        note: same Shopify customer accounts authorization server metadata
+      - path: /.well-known/ucp
+        status: 200
+        type: application/json
+        file: trass-games-yeeps-ucp.json
+        note: Universal Commerce Protocol merchant profile (versions 2026-04-08,
+          2026-01-23) with dev.ucp.shopping MCP service endpoint and checkout,
+          fulfillment, and discount capabilities
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 200
+        type: text/plain
+        file: ../llms/trass-games-llms.txt
+      - path: /agents.md
+        status: 200
+        type: text/markdown
+        file: ../llms/trass-games-agents.md
+  - host: https://gogvr.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 200
+        type: application/json
+        file: trass-games-gogvr-openid-configuration.json
+        note: Shopify customer accounts OIDC metadata (issuer shopify.com/authentication/65151271127)
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 200
+        note: Shopify-generated agent instructions for the Gods of Gravity store
+          (godsofgravityvr.com); not saved, equivalent in shape to the yeeps.com
+          llms.txt

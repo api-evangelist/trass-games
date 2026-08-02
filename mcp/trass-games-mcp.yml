@@ -1,0 +1,55 @@
+generated: '2026-07-21'
+method: searched
+status: live
+source: https://yeeps.com/api/mcp
+description: >-
+  Trass Games publishes no first-party MCP server, but both of its Shopify
+  storefronts expose the live Shopify-hosted storefront MCP endpoint. The tool
+  list below was captured verbatim from a tools/list call to
+  https://yeeps.com/api/mcp on 2026-07-21 (5 tools; no authentication required
+  for catalog/policy tools). An equivalent endpoint answers on
+  https://gogvr.com/api/mcp for the Gods of Gravity store. A parallel
+  Universal Commerce Protocol endpoint at https://yeeps.com/api/ucp/mcp
+  responded with a JSON-RPC error requiring a UCP agent profile
+  (invalid_profile_url), so its checkout tools are gated on UCP discovery; the
+  store's UCP merchant profile is captured in
+  well-known/trass-games-yeeps-ucp.json.
+server:
+  name: yeeps-storefront
+  transport: http
+  url: https://yeeps.com/api/mcp
+  auth: none
+  probed: '2026-07-21'
+  probe_status: 200
+additional_servers:
+  - name: gods-of-gravity-storefront
+    transport: http
+    url: https://gogvr.com/api/mcp
+    auth: none
+    probed: '2026-07-21'
+    probe_status: 200
+  - name: yeeps-ucp
+    transport: http
+    url: https://yeeps.com/api/ucp/mcp
+    auth: ucp-agent-profile
+    probed: '2026-07-21'
+    note: tools/list returned JSON-RPC error -32001 "UCP discovery failed /
+      invalid_profile_url" without a UCP agent profile
+tools:
+  - name: search_catalog
+    description: Search for products from the online store, hosted on Shopify.
+      Natural-language queries and/or filter criteria (categories, price range),
+      with cursor pagination. Response conforms to the UCP catalog search
+      capability (dev.ucp.shopping.catalog.search).
+  - name: get_cart
+    description: Get the cart including items, shipping options, discount info,
+      and checkout url for a given cart id.
+  - name: update_cart
+    description: Perform updates to a cart, including adding/removing/updating
+      line items, buyer information, and shipping details.
+  - name: search_shop_policies_and_faqs
+    description: Used to get facts about the store's policies, products, or
+      services.
+  - name: get_product_details
+    description: Look up a product by ID; pass the options parameter to select a
+      specific variant for the product card.

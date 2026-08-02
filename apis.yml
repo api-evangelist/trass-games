@@ -1,22 +1,107 @@
 aid: trass-games
 name: Trass Games
-description: Trass Games is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: Trass Games is an a16z-backed independent VR game studio best known for
+  Yeeps - Hide and Seek, a free-to-play social hide-and-seek and building game on Meta
+  Quest, and Gods of Gravity, an arcade space RTS. The studio ships a Yeeps companion
+  app for iOS and Android, sells plush, maker-kit, and apparel merchandise through
+  Shopify storefronts at yeeps.com and godsofgravityvr.com, and runs a community
+  licensing program for creators. Trass Games publishes no first-party developer API,
+  but its storefronts expose agent-ready commerce surfaces including llms.txt,
+  agents.md, a Universal Commerce Protocol (UCP) merchant profile, and a live
+  storefront MCP endpoint.
 url: https://raw.githubusercontent.com/api-evangelist/trass-games/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://yeeps.com/cdn/shop/files/yeeps-head-full-color.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - a16z
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profile
+x-tier-reason: consumer VR game studio with no first-party developer API; agent-ready
+  Shopify storefront surfaces captured
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
-- Company
-apis: []
+- Gaming
+- Virtual Reality
+- VR Games
+- Meta Quest
+- Social Games
+- Ecommerce
+- Entertainment
+apis:
+- name: Yeeps Storefront MCP
+  description: Live Shopify-hosted storefront MCP endpoint for the Yeeps store,
+    exposing catalog search, cart management, product details, and shop policy/FAQ
+    tools over JSON-RPC (streamable HTTP). Probed live 2026-07-21 with tools/list
+    returning 5 tools. A parallel UCP MCP endpoint (/api/ucp/mcp) requires a UCP
+    agent profile. An equivalent endpoint runs on gogvr.com for Gods of Gravity.
+  humanURL: https://yeeps.com
+  baseURL: https://yeeps.com/api/mcp
+  tags:
+  - MCP
+  - Commerce
+  - Agents
+  properties:
+  - type: MCPServer
+    url: mcp/trass-games-mcp.yml
+common:
+- type: DomainSecurity
+  url: security/trass-games-domain-security.yml
+- name: Trass Games Website
+  type: Website
+  url: https://trass.games
+- name: Yeeps - Hide and Seek (game site and store)
+  type: Website
+  url: https://yeeps.com
+- name: GitHub Organization
+  type: GitHubOrganization
+  url: https://github.com/trass-games
+- name: Support
+  type: Support
+  url: https://yeeps.com/pages/support
+- name: Discord Community
+  type: Community
+  url: https://discord.gg/yeeps
+- name: Terms of Service
+  type: TermsOfService
+  url: https://yeeps.com/policies/terms-of-service
+- name: Privacy Policy
+  type: PrivacyPolicy
+  url: https://yeeps.com/policies/privacy-policy
+- name: Trass Games Licensing Program
+  type: Licensing
+  url: https://yeeps.com/pages/trass-games-licensing
+- name: MCP Server
+  type: MCPServer
+  url: mcp/trass-games-mcp.yml
+- name: LLMs.txt
+  type: LLMsTxt
+  url: llms/trass-games-llms.txt
+- name: Well-Known Discovery Surface
+  type: WellKnown
+  url: well-known/trass-games-well-known.yml
+- name: Conformance
+  type: Conformance
+  url: conformance/trass-games-conformance.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v1
