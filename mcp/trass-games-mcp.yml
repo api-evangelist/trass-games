@@ -1,6 +1,7 @@
 generated: '2026-07-21'
 method: searched
-status: live
+status: published
+status_raw: live
 source: https://yeeps.com/api/mcp
 description: >-
   Trass Games publishes no first-party MCP server, but both of its Shopify
