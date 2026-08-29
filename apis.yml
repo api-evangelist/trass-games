@@ -10,6 +10,17 @@ description: Trass Games is an a16z-backed independent VR game studio best known
   agents.md, a Universal Commerce Protocol (UCP) merchant profile, and a live
   storefront MCP endpoint.
 url: https://raw.githubusercontent.com/api-evangelist/trass-games/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
