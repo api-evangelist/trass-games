@@ -75,6 +75,9 @@ apis:
   properties:
   - type: MCPServer
     url: mcp/trass-games-mcp.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: storefront-mcp
 common:
 - type: DomainSecurity
   url: security/trass-games-domain-security.yml
